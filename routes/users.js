@@ -7,9 +7,7 @@ const bcrypt = require("bcrypt");
 const User = require("../models/user");
 
 /* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
-});
+
 
 router.post("/checkEmail", (req, res) => {
   User.findOne({ email: req.body.email }).then((data) => {
@@ -61,18 +59,7 @@ router.post("/inscription", (req, res) => {
       });
       newUser.save().then((data) => {
         res.json({ result: true,data });
-      }); // newUser.save((data) => {
-      //   res.json(data);
-      //   if (data) {
-      //     res.json({
-      //       message: "Inscription effectuée",
-      //     });
-      //   } else {
-      //     res.json({
-      //       message: "Erreur lors de l'inscription",
-      //     });
-      //   }
-      // });
+      });
     }
   });
 });
